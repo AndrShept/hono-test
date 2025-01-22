@@ -14,7 +14,10 @@ app.use(cors());
 app.get('/hi', (c) => {
   console.log(process.env.MY_VARIABLE);
   console.log(process.env.ref);
-  return c.text('Hello Hono!');
+  return c.json({
+    dad: process.env.rofl,
+    scf: process.env.ref,
+  });
 });
 
 const port = 3000;
