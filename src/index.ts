@@ -19,6 +19,14 @@ app.get('/hi', (c) => {
     scf: process.env.ref,
   });
 });
+app.get('/hi/:id', (c) => {
+  const {id} = c.req.param()
+
+  return c.json({
+    loh: id
+
+  });
+});
 
 const port = 3000;
 console.log(`Server is running on http://localhost:${port}`);
