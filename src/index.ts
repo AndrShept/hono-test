@@ -5,30 +5,19 @@ import { logger } from 'hono/logger';
 import dotenv from 'dotenv';
 import { Server } from 'socket.io';
 import type { Server as HTTPServer } from 'node:http';
+import { timeout } from 'hono/timeout';
+import { HTTPException } from 'hono/http-exception';
 
 export const app = new Hono().basePath('/api');
 dotenv.config();
 app.use(logger());
 app.use(cors());
 
-app.get('/hi', (c) => {
-  console.log(process.env.MY_VARIABLE);
-  console.log(process.env.ref);
-  return c.json({
-    dad: process.env.rofl,
-    scf: process.env.ref,
-  });
-});
-app.get('/hi/:id', (c) => {
-  const {id} = c.req.param()
 
-  return c.json({
-    loh: id
 
-  });
-});
 
-const port = 3000;
+
+const port = 3001;
 console.log(`Server is running on http://localhost:${port}`);
 
 const httpServer = serve({
